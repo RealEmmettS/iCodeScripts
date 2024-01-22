@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Define the directory paths
+DIRECTORIES=(
+    /home/$USER/Pictures
+    /home/$USER/Desktop
+    /home/$USER/Templates
+    /home/$USER/python_games
+    /home/$USER/Documents
+    /home/$USER/Music
+)
+
+# Define the filenames to remove
+FILES_TO_REMOVE=(
+    "8linky.txt"
+    "PiNkY.txt"
+    "1nky.txt"
+    "CLYDE.txt"
+    "sp00ky.txt"
+    "funky.txt"
+    "sue.txt"
+)
+
+# Loop through each directory
+for dir in "${DIRECTORIES[@]}"; do
+    # Loop through each file to remove
+    for file in "${FILES_TO_REMOVE[@]}"; do
+        # Construct the full path to the file
+        full_path="$dir/$file"
+        # Check if the file exists and remove it
+        if [ -f "$full_path" ]; then
+            rm "$full_path"
+            echo "Removed $full_path"
+        else
+            echo "File $full_path does not exist."
+        fi
+    done
+done
